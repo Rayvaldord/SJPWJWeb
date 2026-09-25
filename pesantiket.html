@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan Tiket - Sinar Jaya Purworejo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Mengaktifkan Dark Mode berbasis Class
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'], },
+                    colors: { primary: '#ff5722', primarydark: '#e64a19', navy: '#1d3557', darknavy: '#112035', darkest: '#0b1523', success: '#10b981', danger: '#ef4444' },
+                    boxShadow: { 'soft': '0 10px 40px -10px rgba(0,0,0,0.15)', }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base Background Transition */
+        body { transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out; background-color: #f3f4f6; }
+        body.dark { background-color: #0b1523; color: #f1f5f9; }
+
+        /* Navbar Light Mode */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid #e5e7eb; transition: all 0.4s ease; }
+        .logo a { text-decoration: none; color: #ff5722; font-size: 24px; font-weight: bold; }
+        .logo span { color: #1d3557; transition: 0.3s; }
+        .nav-links { display: flex; list-style: none; align-items: center; gap: 30px; margin: 0; padding: 0;}
+        .nav-links li a { text-decoration: none; color: #374151; font-weight: 600; transition: 0.3s; font-size: 16px;}
+        .nav-links li a:hover { color: #ff5722; }
+        
+        /* Tombol Toggle Tema */
+        .theme-toggle-wrapper { display: flex; align-items: center; }
+        .theme-toggle-btn { background: none; border: none; cursor: pointer; color: #475569; padding: 5px; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .theme-toggle-btn:hover { color: #ff5722; transform: scale(1.1); }
+        .sun-icon { display: none; }
+
+        /* Navbar Dark Mode */
+        body.dark .navbar { background-color: rgba(17, 32, 53, 0.95); border-bottom-color: #1e293b; }
+        body.dark .logo span { color: #ffffff; }
+        body.dark .nav-links li a { color: #cbd5e1; }
+        body.dark .nav-links li a:hover { color: #ff5722; }
+        body.dark .theme-toggle-btn { color: #cbd5e1; }
+        body.dark .theme-toggle-btn:hover { color: #ff5722; }
+        body.dark .theme-toggle-btn .sun-icon { display: block; color: #fbbf24; filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.6)); }
+        body.dark .theme-toggle-btn:hover .sun-icon { color: #ff5722; }
+        body.dark .theme-toggle-btn .moon-icon { display: none; }
+        body.dark .hamburger span { background-color: #ffffff; }
+
+        /* Animasi */
+        .fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Modal Overlay */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(11, 21, 35, 0.8); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 1100; }
+        .modal-content { padding: 2rem; border-radius: 1rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3); max-width: 90%; width: 400px; text-align: center; transform: scale(0.95); animation: popIn 0.3s ease-out forwards; transition: 0.4s; }
+        @keyframes popIn { to { transform: scale(1); } }
+        
+        /* Scrollbar kustom */
+        #destination-suggestions::-webkit-scrollbar { width: 8px; }
+        #destination-suggestions::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 4px; }
+        body.dark #destination-suggestions::-webkit-scrollbar-thumb { background-color: #475569; }
+
+        .step-container { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; position: relative; }
+        .step { flex: 1 1 auto; min-width: 80px; text-align: center; margin-bottom: 1rem; z-index: 2; }
+        
+        /* Mobile Navbar */
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .hamburger span { width: 30px; height: 3px; background-color: #333; border-radius: 3px; transition: 0.3s; }
+        
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .hamburger { display: flex; }
+            .nav-links { position: absolute; top: 60px; right: -100%; flex-direction: column; background-color: rgba(255,255,255,0.98); backdrop-filter: blur(10px); width: 100%; text-align: center; padding: 30px 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1); transition: right 0.3s ease-in-out; border-bottom: 1px solid #e5e7eb; }
+            body.dark .nav-links { background-color: rgba(17, 32, 53, 0.98); border-bottom-color: #1e293b; }
+            .nav-links.active { right: 0; }
+            .modal-content { padding: 1.5rem; } 
+            .step-container { justify-content: center; } 
+            .step { min-width: unset; flex-basis: calc(33% - 1rem); } 
+            .step:nth-child(3n) { margin-right: 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased text-gray-800 dark:text-gray-200">
+    <!-- HEADER NAVBAR -->
+    <header class="navbar" id="navbar">
+        <div class="logo"><a href="index.html#beranda">Sinar Jaya <span>Purworejo</span></a></div>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        <ul class="nav-links" id="nav-links">
+            <li class="theme-toggle-wrapper">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Ganti Tema">
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </li>
+            <li><a href="index.html#beranda">Beranda</a></li>
+            <li><a href="index.html#tentang">Tentang Kami</a></li>
+            <li><a href="index.html#rute">Rute Tujuan</a></li>
+            <li><a href="index.html#galeri">Galeri</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+    </header>
+
+    <div class="container mx-auto px-4 pt-32 pb-12"> 
+        <!-- KOTAK FORM UTAMA -->
+        <div class="bg-white dark:bg-navy rounded-2xl shadow-soft overflow-hidden max-w-4xl mx-auto border border-gray-100 dark:border-gray-800 transition-colors duration-500">
+            <!-- Header Biru -->
+            <div class="bg-navy dark:bg-darknavy text-white p-6 sm:p-8 text-center relative overflow-hidden transition-colors duration-500 border-b border-navy dark:border-gray-800">
+                <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 rounded-full bg-white/10 blur-2xl"></div>
+                <div class="absolute bottom-0 left-0 -ml-8 -mb-8 w-24 h-24 rounded-full bg-primary/20 blur-xl"></div>
+                <h1 class="text-2xl md:text-3xl font-bold relative z-10 tracking-wide">Pemesanan Tiket Bus</h1>
+                <p class="mt-2 text-sm md:text-base text-gray-200 relative z-10 font-light">Agen Resmi Sinar Jaya Purworejo</p>
+            </div>
+            
+            <!-- Progress Bar Tracker -->
+            <div class="px-6 pt-8 pb-4">
+                <div class="step-container relative">
+                    <div class="step flex flex-col items-center"><div class="step-number w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold shadow-md">1</div><span class="step-text mt-2 text-xs text-navy dark:text-white font-bold">Intro</span></div>
+                    <div class="step flex flex-col items-center"><div class="step-number w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 flex items-center justify-center font-bold">2</div><span class="step-text mt-2 text-xs text-gray-400 dark:text-gray-500">Data Diri</span></div>
+                    <div class="step flex flex-col items-center"><div class="step-number w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 flex items-center justify-center font-bold">3</div><span class="step-text mt-2 text-xs text-gray-400 dark:text-gray-500">Perjalanan</span></div>
+                    <div class="step flex flex-col items-center"><div class="step-number w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 flex items-center justify-center font-bold">4</div><span class="step-text mt-2 text-xs text-gray-400 dark:text-gray-500">Penumpang</span></div>
+                    <div class="step flex flex-col items-center"><div class="step-number w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 flex items-center justify-center font-bold">5</div><span class="step-text mt-2 text-xs text-gray-400 dark:text-gray-500">Konfirmasi</span></div>
+                </div>
+                <div class="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-2 mt-4 overflow-hidden transition-colors">
+                    <div id="progress-bar" class="bg-primary h-full rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
+                </div>
+            </div>
+            
+            <div class="p-6 sm:p-8">
+                <!-- STEP 0: Halaman Intro -->
+                <div id="intro-page" class="text-center py-6 sm:py-8 fade-in">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6"><i class="fa-solid fa-bus text-3xl"></i></div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-navy dark:text-white mb-4 transition-colors">Selamat Datang!</h2>
+                    <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-2 transition-colors">Form ini ditujukan untuk memudahkan pendataan pemesanan tiket bus via online.</p>
+                    <p class="text-sm font-semibold text-primary mb-6 bg-primary/5 dark:bg-primary/10 inline-block px-4 py-2 rounded-lg">(Pembayaran tidak akan dilakukan di form ini!)</p>
+                    <div class="bg-gray-50 dark:bg-darknavy rounded-xl p-6 text-sm text-gray-600 dark:text-gray-300 mb-8 border border-gray-100 dark:border-gray-800 transition-colors">
+                        <p class="mb-3">Untuk informasi lebih lanjut, silakan hubungi nomor WhatsApp resmi <strong>08118195828</strong> atau datang langsung ke agen resmi PO. Sinar Jaya Purworejo:</p>
+                        <p class="font-medium text-navy dark:text-gray-200">📍 Jl. Ir. H. Juanda No.16, Ringroad Utara Purworejo</p>
+                        <p class="font-medium text-navy dark:text-gray-200">📍 Terminal Baru Purworejo, Lt.2 Loket 2M</p>
+                        <p class="mt-4 text-xs italic text-gray-500 dark:text-gray-400">* Selalu cek keaslian nomor dengan datang ke agen resmi.</p>
+                    </div>
+                    <button type="button" onclick="nextStep(0)" class="w-full sm:w-auto px-8 py-3 bg-primary text-white rounded-xl hover:bg-primarydark hover:-translate-y-1 hover:shadow-lg transition-all duration-300 text-base font-semibold">
+                        Mulai Pesan Tiket <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Step 1: Data Diri -->
+                <div id="step1" class="hidden fade-in">
+                    <h2 class="text-xl sm:text-2xl font-bold text-navy dark:text-white mb-6 border-b border-gray-100 dark:border-gray-700 pb-4 transition-colors">Identitas Pemesan</h2>
+                    <form>
+                        <div class="mb-5">
+                            <label for="fullname" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Nama Lengkap*</label>
+                            <input type="text" id="fullname" class="w-full px-4 py-3 bg-gray-50 dark:bg-darknavy border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary text-gray-700 dark:text-white outline-none transition-colors" placeholder="Sesuai KTP" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="nik" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">NIK KTP*</label>
+                            <input type="text" id="nik" class="w-full px-4 py-3 bg-gray-50 dark:bg-darknavy border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary text-gray-700 dark:text-white outline-none transition-colors" placeholder="16 Digit Angka NIK" required>
+                            <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Pastikan NIK benar.</p>
+                        </div>
+                        <div class="mb-6">
+                            <label for="phone" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Nomor WhatsApp*</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3.5 text-gray-400"><i class="fa-brands fa-whatsapp text-lg"></i></span>
+                                <input type="tel" id="phone" class="w-full pl-11 pr-4 py-3 bg-gray-50 dark:bg-darknavy border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary text-gray-700 dark:text-white outline-none transition-colors" placeholder="Contoh: 081234567890" required>
+                            </div>
+                        </div>
+                        <div class="flex justify-between mt-8 pt-6 border-t border-gray-100 dark:border-gray-700"> 
+                            <button type="button" onclick="prevStep(1)" class="px-6 py-2.5 text-gray-600 dark:text-gray-400 font-medium hover:text-navy dark:hover:text-white transition-colors"><i class="fa-solid fa-arrow-left mr-2"></i> Kembali</button>
+                            <button type="button" onclick="nextStep(1)" class="px-6 py-2.5 bg-primary text-white rounded-xl hover:bg-primarydark transition-all font-semibold">Selanjutnya</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Step 2: Data Perjalanan -->
+                <div id="step2" class="hidden fade-in">
+                    <h2 class="text-xl sm:text-2xl font-bold text-navy dark:text-white mb-6 border-b border-gray-100 dark:border-gray-700 pb-4 transition-colors">Detail Perjalanan</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="relative">
+                            <label for="destination-search" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Pilih Kota Tujuan*</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3 text-gray-400"><i class="fa-solid fa-location-dot"></i></span>
+                                <input type="text" id="destination-search" class="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-darknavy border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-white rounded-xl outline-none transition-colors" placeholder="Cari atau pilih tujuan..." autocomplete="off">
+                            </div>
+                            <div id="destination-suggestions" class="absolute z-20 bg-white dark:bg-darknavy border border-gray-100 dark:border-gray-700 rounded-xl w-full mt-2 max-h-60 overflow-y-auto shadow-xl hidden transition-colors"></div>
+                        </div>
+                        <div>
+                            <label for="other-destination" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Tujuan Lainnya</label>
+                            <input type="text" id="other-destination" class="w-full px-4 py-3 bg-gray-50 dark:bg-darknavy border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-white rounded-xl outline-none transition-colors" placeholder="Isi jika tidak ada di daftar">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="date" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 cursor-pointer">Tanggal Keberangkatan*</label>
+                            <input type="date" id="date" class="w-full px-4 py-3 bg-gray-50 dark:bg-darknavy border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-white rounded-xl outline-none cursor-pointer transition-colors" required>
+                        </div>
+                        <div>
+                            <label for="departure-time" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Waktu Pemberangkatan*</label>
+                            <select id="departure-time" class="w-full px-4 py-3 bg-gray-50 dark:bg-darknavy border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-white rounded-xl outline-none appearance-none transition-colors" required>
+                                <option value="" class="dark:bg-darknavy">-- Pilih Waktu --</option>
+                                <option value="Pagi" class="dark:bg-darknavy">Pagi Hari</option>
+                                <option value="Sore" class="dark:bg-darknavy">Sore Hari</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="departure-location" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Lokasi Naik (Pemberangkatan)*</label>
+                        <select id="departure-location" class="w-full px-4 py-3 bg-gray-50 dark:bg-darknavy border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-white rounded-xl outline-none appearance-none transition-colors" required>
+                            <option value="" class="dark:bg-darknavy">Pilih lokasi...</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label for="passengers" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Total Penumpang*</label>
+                        <select id="passengers" class="w-full px-4 py-3 bg-gray-50 dark:bg-darknavy border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-white rounded-xl outline-none appearance-none transition-colors" required>
+                            <option value="1" class="dark:bg-darknavy">1 Orang (Hanya Anda)</option>
+                            <option value="2" class="dark:bg-darknavy">2 Orang</option>
+                            <option value="3" class="dark:bg-darknavy">3 Orang</option>
+                            <option value="4" class="dark:bg-darknavy">4 Orang</option>
+                            <option value="5" class="dark:bg-darknavy">5 Orang</option>
+                            <option value="6" class="dark:bg-darknavy">6 Orang</option>
+                            <option value="7" class="dark:bg-darknavy">7 Orang</option>
+                            <option value="8" class="dark:bg-darknavy">8 Orang</option>
+                            <option value="9" class="dark:bg-darknavy">9 Orang</option>
+                            <option value="10" class="dark:bg-darknavy">10 Orang</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-between mt-8 pt-6 border-t border-gray-100 dark:border-gray-700">
+                        <button type="button" onclick="prevStep(2)" class="px-6 py-2.5 text-gray-600 dark:text-gray-400 font-medium hover:text-navy dark:hover:text-white transition-colors"><i class="fa-solid fa-arrow-left mr-2"></i> Kembali</button>
+                        <button type="button" onclick="nextStep(2)" class="px-6 py-2.5 bg-primary text-white rounded-xl hover:bg-primarydark transition-all font-semibold">Selanjutnya</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Data Penumpang Lain -->
+                <div id="step3" class="hidden fade-in">
+                    <h2 class="text-xl sm:text-2xl font-bold text-navy dark:text-white mb-2 transition-colors">Detail Rombongan</h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 border-b border-gray-100 dark:border-gray-700 pb-4">Lengkapi data penumpang lainnya.</p>
+                    
+                    <div id="other-passengers-form" class="space-y-4"></div>
+                    
+                    <div class="flex justify-between mt-8 pt-6 border-t border-gray-100 dark:border-gray-700">
+                        <button type="button" onclick="prevStep(3)" class="px-6 py-2.5 text-gray-600 dark:text-gray-400 font-medium hover:text-navy dark:hover:text-white transition-colors"><i class="fa-solid fa-arrow-left mr-2"></i> Kembali</button>
+                        <button type="button" onclick="nextStep(3)" class="px-6 py-2.5 bg-primary text-white rounded-xl hover:bg-primarydark transition-all font-semibold">Cek Rangkuman</button>
+                    </div>
+                </div>
+                
+                <!-- Step 4: Konfirmasi Pemesanan -->
+                <div id="step4" class="hidden fade-in">
+                    <div class="text-center mb-6">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-navy dark:text-white mb-2 transition-colors">Rangkuman Pesanan</h2>
+                        <p class="text-gray-500 dark:text-gray-400">Pastikan semua data perjalanan Anda sudah benar.</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-darknavy border border-gray-200 dark:border-gray-700 rounded-xl p-6 mb-8 transition-colors">
+                        <ul class="space-y-3 text-sm sm:text-base text-gray-700 dark:text-gray-200" id="confirmation-details"></ul>
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between gap-4 mt-8 pt-6 border-t border-gray-100 dark:border-gray-700"> 
+                        <button type="button" onclick="prevStep(4)" class="px-6 py-2.5 text-gray-600 dark:text-gray-400 font-medium hover:text-navy dark:hover:text-white transition-colors text-center sm:text-left"><i class="fa-solid fa-arrow-left mr-2"></i> Edit Data</button>
+                        <button onclick="showConfirmationDialog()" class="px-6 py-3 bg-success text-white rounded-xl hover:bg-emerald-600 transition-all font-bold flex justify-center items-center"><i class="fa-brands fa-whatsapp mr-2 text-lg"></i> Proses via Admin</button>
+                    </div>
+                </div>
+
+                <!-- Step Selesai -->
+                <div id="final-confirmation" class="hidden fade-in p-6 text-center"> 
+                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-success/10 text-success mb-6"><i class="fa-solid fa-check text-4xl"></i></div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-navy dark:text-white mb-3 transition-colors">Terima kasih, <span id="final-name" class="text-primary"></span>!</h2>
+                    <p class="text-lg text-gray-700 dark:text-gray-300">Pemesanan Anda sedang diproses.</p>
+                    <p class="text-gray-500 dark:text-gray-400 mt-2 mb-8">Mohon tunggu balasan chat konfirmasi dan instruksi pembayaran dari Admin WhatsApp kami.</p>
+                    
+                    <button onclick="window.location.reload()" class="px-8 py-3 bg-primary text-white rounded-xl hover:bg-primarydark hover:shadow-lg transition-all duration-300 font-bold inline-flex items-center">
+                        <i class="fa-solid fa-rotate-right mr-2"></i> Pesan Tiket Lagi
+                    </button>
+                </div>
+
+                <!-- Modal Konfirmasi Pop-up -->
+                <div id="confirmation-modal" class="modal-overlay hidden">
+                    <div class="modal-content bg-white dark:bg-darknavy transition-colors">
+                        <div class="text-primary mb-4 text-4xl"><i class="fa-regular fa-circle-question"></i></div>
+                        <h3 class="text-xl font-bold text-navy dark:text-white mb-2">Lanjutkan Pemesanan?</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-8 text-sm">Data akan dikirim ke WhatsApp Admin Sinar Jaya Purworejo untuk konfirmasi ketersediaan kursi.</p>
+                        <div class="flex flex-col sm:flex-row justify-center gap-3"> 
+                            <button type="button" onclick="cancelBooking()" class="w-full sm:w-auto px-6 py-2.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Kembali</button>
+                            <button type="button" onclick="confirmBooking()" class="w-full sm:w-auto px-6 py-2.5 bg-success text-white font-bold rounded-xl hover:bg-emerald-600 transition-all">Ya, Kirim Data</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+    // LOGIKA TEMA DARK/LIGHT SINKRONISASI
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+    }
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if(themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            if(document.body.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+
+    let currentStep = 0; const totalSteps = 5; let otherPassengersData = []; 
+    const allDestinations = ["Ampera", "Balaraja", "Bambu Kuning", "Bekasi", "Bitung Tangerang", "Bogor", "BSD", "Bubulak", "Bulak kapal", "Ciawi", "Cibarusah", "Cibitung", "Cikarang", "Cikokol", "Cikopo", "Ciledug", "Cilegon", "Cileungsi", "Cimanggis Depok", "Cicadas", "Citereup", "Ciputat", "Dawuan", "Depok Jatijajar", "Doyong", "Grogol", "Jatiasih", "Kalideres", "Karawang", "Klari", "Kotabumi lampung", "Kp.Rambutan", "Kranji", "Kutabumi Tangerang", "Lebak Bulus", "Lippo", "Mampang", "Merak", "Palembang", "Parung", "Pasar Minggu", "Pondok Ungu", "Poris", "Pringsewu", "Pulogebang", "Rajabasa", "Serang", "Simpang Depok", "Sumberarta", "Tanjung Priok", "Taman Harapan Baru"];
+    let selectedDestinationFromList = ''; 
+    
+    // Hamburger Menu Mobile
+    const hamburger = document.getElementById('hamburger'); const navLinks = document.getElementById('nav-links');
+    if (hamburger && navLinks) { 
+        hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); }); 
+        document.querySelectorAll('.nav-links li a').forEach(item => { item.addEventListener('click', () => { navLinks.classList.remove('active'); }); }); 
+    }
+
+    function nextStep(stepIndex) { 
+        if (currentStep === 0) { document.getElementById('intro-page').classList.add('hidden'); } else { document.getElementById(`step${currentStep}`).classList.add('hidden'); } 
+        let validationPassed = true; 
+        if (currentStep === 1) { validationPassed = validateStep1(); } 
+        else if (currentStep === 2) { validationPassed = validateStep2(); if (validationPassed) { generateOtherPassengersForm(); } } 
+        else if (currentStep === 3) { validationPassed = validateStep3(); if (validationPassed) { updateConfirmationDetails(); } } 
+        
+        if (!validationPassed) { 
+            if (currentStep === 0) { document.getElementById('intro-page').classList.remove('hidden'); } else { document.getElementById(`step${currentStep}`).classList.remove('hidden'); } 
+            updateProgress(); return; 
+        } 
+        currentStep++; document.getElementById(`step${currentStep}`).classList.remove('hidden'); updateProgress(); 
+    }
+    
+    function prevStep(stepIndex) { 
+        if (currentStep === 0) return; 
+        if (currentStep === 0) { document.getElementById('intro-page').classList.add('hidden'); } else { document.getElementById(`step${currentStep}`).classList.add('hidden'); } 
+        currentStep--; 
+        if (currentStep === 0) { document.getElementById('intro-page').classList.remove('hidden'); } else { document.getElementById(`step${currentStep}`).classList.remove('hidden'); } 
+        updateProgress(); 
+    }
+
+    function validateStep1() { const name = document.getElementById('fullname').value; const nikEl = document.getElementById('nik'); const nik = nikEl.value; const phone = document.getElementById('phone').value; if (!name.trim()) { alert('Nama lengkap harus diisi!'); return false; } if (!nik.trim()) { alert('NIK KTP harus diisi!'); return false; } if (!/^[0-9]{16}$/.test(nik.trim())) { alert('Format NIK KTP salah! NIK harus terdiri dari 16 digit angka.'); nikEl.value = ''; return false; } if (!phone.trim()) { alert('Nomor WhatsApp harus diisi!'); return false; } return true; }
+    
+    function validateStep2() { const destEl = document.getElementById('destination-search'); const destinationSearchInput = destEl.value.trim(); const otherDestination = document.getElementById('other-destination').value.trim(); const dateEl = document.getElementById('date'); const date = dateEl.value; const departureTime = document.getElementById('departure-time').value; const departureLocation = document.getElementById('departure-location').value; const finalDestinationInput = selectedDestinationFromList || destinationSearchInput; if (!finalDestinationInput && !otherDestination) { alert('Pilih tujuan dari "Daftar Tujuan" atau isi "Tujuan Lainnya"!'); return false; } if (finalDestinationInput && otherDestination) { alert('Harap pilih "satu" tujuan saja. Hapus salah satu pilihan.'); return false; } if (finalDestinationInput && !selectedDestinationFromList && !allDestinations.map(d => d.toLowerCase()).includes(finalDestinationInput.toLowerCase())) { alert('Tujuan yang diketik tidak ada dalam daftar saran. Silakan pilih dari daftar atau isi di kolom "Tujuan Lainnya".'); destEl.value = ''; return false; } if (!date) { alert('Tanggal keberangkatan harus diisi!'); return false; } const today = new Date().toISOString().split('T')[0]; if (date < today) { alert('Tanggal keberangkatan tidak boleh di masa lalu!'); dateEl.value = ''; return false; } if (!departureTime) { alert('Waktu pemberangkatan harus dipilih!'); return false; } if (!departureLocation) { alert('Lokasi pemberangkatan harus dipilih!'); return false; } return true; }
+
+    function generateOtherPassengersForm() { 
+        const totalPassengers = parseInt(document.getElementById('passengers').value); 
+        const otherPassengersFormDiv = document.getElementById('other-passengers-form'); 
+        otherPassengersFormDiv.innerHTML = ''; 
+        const mainPassengerName = document.getElementById('fullname').value; 
+        const mainPassengerNIK = document.getElementById('nik').value; 
+        
+        otherPassengersFormDiv.innerHTML += ` 
+        <div class="p-5 border border-primary/20 rounded-xl bg-primary/5 shadow-sm relative transition-colors"> 
+            <span class="absolute top-0 right-0 bg-primary text-white text-xs px-3 py-1 rounded-bl-lg rounded-tr-xl font-semibold">Pemesan</span> 
+            <h3 class="text-base font-bold text-navy dark:text-white mb-3">Penumpang 1 (Anda)</h3> 
+            <div class="mb-3"> 
+                <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">Nama Lengkap</label> 
+                <input type="text" class="w-full px-3 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-white/50 dark:bg-darknavy/50 text-gray-700 dark:text-gray-200 outline-none" value="${mainPassengerName}" readonly> 
+            </div> 
+            <div> 
+                <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">NIK KTP</label> 
+                <input type="text" class="w-full px-3 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-white/50 dark:bg-darknavy/50 text-gray-700 dark:text-gray-200 outline-none" value="${mainPassengerNIK}" readonly> 
+            </div> 
+        </div> `; 
+        
+        for (let i = 2; i <= totalPassengers; i++) { 
+            const prevData = otherPassengersData[i - 1] || { name: '', nik: '' }; 
+            otherPassengersFormDiv.innerHTML += ` 
+            <div class="p-5 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-darknavy shadow-sm mt-4 transition-colors"> 
+                <h3 class="text-base font-bold text-navy dark:text-white mb-4">Penumpang ${i}</h3> 
+                <div class="mb-4"> 
+                    <label for="other-fullname-${i}" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Nama Lengkap*</label> 
+                    <input type="text" id="other-fullname-${i}" value="${prevData.name}" class="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-gray-700 dark:text-white transition-colors" required> 
+                </div> 
+                <div> 
+                    <label for="other-nik-${i}" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">NIK KTP*</label> 
+                    <input type="text" id="other-nik-${i}" value="${prevData.nik}" class="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-gray-700 dark:text-white transition-colors" required> 
+                </div> 
+            </div> `; 
+        } 
+    }
+    
+    function validateStep3() { const totalPassengers = parseInt(document.getElementById('passengers').value); let tempPassengerData = []; tempPassengerData.push({ name: document.getElementById('fullname').value, nik: document.getElementById('nik').value }); for (let i = 2; i <= totalPassengers; i++) { const nameInput = document.getElementById(`other-fullname-${i}`); const nikInput = document.getElementById(`other-nik-${i}`); if (!nameInput || !nameInput.value.trim()) { alert(`Nama lengkap untuk Penumpang ${i} harus diisi!`); return false; } if (!nikInput || !nikInput.value.trim()) { alert(`NIK KTP untuk Penumpang ${i} harus diisi!`); return false; } if (!/^[0-9]{16}$/.test(nikInput.value.trim())) { alert(`Format NIK KTP Penumpang ${i} salah! Harus terdiri dari 16 digit angka.`); nikInput.value = ''; return false; } tempPassengerData.push({ name: nameInput.value.trim(), nik: nikInput.value.trim() }); } otherPassengersData = tempPassengerData; return true; }
+    
+    function updateConfirmationDetails() { 
+        const confirmationList = document.getElementById('confirmation-details'); 
+        confirmationList.innerHTML = ''; 
+        const finalDestination = selectedDestinationFromList || document.getElementById('other-destination').value.trim(); 
+        const dateParts = document.getElementById('date').value.split('-'); 
+        const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`; 
+        
+        confirmationList.innerHTML += `<li class="flex flex-col sm:flex-row sm:justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span class="text-gray-500 dark:text-gray-400">Nomor WhatsApp:</span> <span class="font-semibold text-navy dark:text-white">${document.getElementById('phone').value}</span></li>`; 
+        confirmationList.innerHTML += `<li class="flex flex-col sm:flex-row sm:justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span class="text-gray-500 dark:text-gray-400">Tujuan:</span> <span class="font-semibold text-primary">${finalDestination}</span></li>`; 
+        confirmationList.innerHTML += `<li class="flex flex-col sm:flex-row sm:justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span class="text-gray-500 dark:text-gray-400">Tgl Keberangkatan:</span> <span class="font-semibold text-navy dark:text-white">${formattedDate}</span></li>`; 
+        confirmationList.innerHTML += `<li class="flex flex-col sm:flex-row sm:justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span class="text-gray-500 dark:text-gray-400">Waktu:</span> <span class="font-semibold text-navy dark:text-white">${document.getElementById('departure-time').value}</span></li>`; 
+        confirmationList.innerHTML += `<li class="flex flex-col sm:flex-row sm:justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span class="text-gray-500 dark:text-gray-400">Lokasi Naik:</span> <span class="font-semibold text-navy dark:text-white text-right">${document.getElementById('departure-location').value}</span></li>`; 
+        confirmationList.innerHTML += `<li class="flex flex-col sm:flex-row sm:justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span class="text-gray-500 dark:text-gray-400">Jml Penumpang:</span> <span class="font-semibold text-navy dark:text-white">${document.getElementById('passengers').value} Orang</span></li>`; 
+        confirmationList.innerHTML += `<li class="mt-4 pt-2 font-bold text-navy dark:text-white">Daftar Penumpang:</li>`; 
+        
+        otherPassengersData.forEach((passenger, index) => { 
+            confirmationList.innerHTML += ` 
+            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-100 dark:border-gray-700 shadow-sm mt-2 transition-colors"> 
+                <div class="font-semibold text-sm text-primary mb-1">Penumpang ${index + 1}</div> 
+                <div class="text-sm"><span class="text-gray-500 dark:text-gray-400">Nama:</span> <span class="font-medium dark:text-gray-200">${passenger.name}</span></div> 
+                <div class="text-sm"><span class="text-gray-500 dark:text-gray-400">NIK:</span> <span class="font-medium dark:text-gray-200">${passenger.nik}</span></div> 
+            </div> `; 
+        }); 
+    }
+    
+    function updateProgress() { 
+        document.querySelectorAll('.step').forEach((step, index) => { 
+            const number = step.querySelector('.step-number'); 
+            const text = step.querySelector('.step-text'); 
+            const isCompleted = index < currentStep; 
+            const isActive = index === currentStep; 
+            
+            number.className = 'step-number w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all shadow-sm';
+            text.className = 'step-text mt-2 text-xs transition-all';
+            
+            if (isCompleted || isActive) { 
+                number.classList.add('bg-primary', 'text-white', 'shadow-md'); 
+            } else { 
+                number.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-500', 'dark:text-gray-400'); 
+            } 
+            
+            if (isActive || isCompleted) { 
+                text.classList.add(isActive ? 'text-primary' : 'text-navy', 'dark:text-white', 'font-bold'); 
+            } else { 
+                text.classList.add('text-gray-400', 'dark:text-gray-500'); 
+            } 
+        }); 
+        
+        const progressPercentage = (currentStep / (totalSteps - 1)) * 100; 
+        document.getElementById('progress-bar').style.width = `${progressPercentage}%`; 
+    }
+    
+    function showConfirmationDialog() { const modal = document.getElementById('confirmation-modal'); modal.classList.remove('hidden'); modal.style.display = 'flex'; }
+    function cancelBooking() { const modal = document.getElementById('confirmation-modal'); modal.classList.add('hidden'); modal.style.display = 'none'; }
+    
+    function confirmBooking() { 
+        const modal = document.getElementById('confirmation-modal'); modal.classList.add('hidden'); modal.style.display = 'none'; 
+        const phone = document.getElementById('phone').value; const otherDestination = document.getElementById('other-destination').value.trim(); const tujuan = selectedDestinationFromList || otherDestination; const tanggal = document.getElementById('date').value; const departureTime = document.getElementById('departure-time').value; const departureLocation = document.getElementById('departure-location').value; const penumpangCount = document.getElementById('passengers').value; 
+        const dateParts = tanggal.split('-'); const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`; 
+        let passengersDetails = ''; 
+        otherPassengersData.forEach((passenger, index) => { passengersDetails += `\n-Penumpang ${index + 1}:\nNama: ${passenger.name}\nNIK: wa.me/${passenger.nik}`; }); 
+        
+        const pesan = `Halo Admin, saya ingin memesan tiket bus sinar jaya dengan detail sebagai berikut:\n\n-Nomor WA Pemesan: \n${phone}\n\n-Tujuan: \n${tujuan}\n\n-Tanggal: \n${formattedDate}\n\n-Waktu Pemberangkatan: \n${departureTime}\n\n-Lokasi Pemberangkatan: \n${departureLocation}\n\n-Jumlah Penumpang: \n${penumpangCount} Orang\n${passengersDetails}`; 
+        window.open(`https://wa.me/628118195828?text=${encodeURIComponent(pesan)}`, '_blank'); 
+        document.getElementById('step4').classList.add('hidden'); 
+        document.getElementById('final-confirmation').classList.remove('hidden'); 
+        document.getElementById('final-name').innerText = document.getElementById('fullname').value; 
+    }
+    
+    window.onload = function() { 
+        currentStep = 0; document.getElementById('intro-page').classList.remove('hidden'); document.getElementById('step1').classList.add('hidden'); document.getElementById('step2').classList.add('hidden'); document.getElementById('step3').classList.add('hidden'); document.getElementById('step4').classList.add('hidden'); document.getElementById('final-confirmation').classList.add('hidden'); document.getElementById('confirmation-modal').classList.add('hidden'); document.getElementById('confirmation-modal').style.display = 'none'; 
+        updateProgress(); 
+        
+        const destinationSearchInput = document.getElementById('destination-search'); const destinationSuggestionsDiv = document.getElementById('destination-suggestions'); 
+        function renderSuggestions(destinations) { 
+            destinationSuggestionsDiv.innerHTML = ''; 
+            if (destinations.length > 0) { 
+                destinations.forEach(destination => { 
+                    const suggestionItem = document.createElement('div'); 
+                    suggestionItem.classList.add('p-3', 'cursor-pointer', 'hover:bg-primary/10', 'hover:text-primary', 'dark:hover:bg-gray-800', 'border-b', 'border-gray-50', 'dark:border-gray-700', 'last:border-0', 'transition-colors', 'font-medium', 'text-gray-700', 'dark:text-gray-200'); 
+                    suggestionItem.textContent = destination; 
+                    suggestionItem.addEventListener('click', function() { destinationSearchInput.value = destination; selectedDestinationFromList = destination; destinationSuggestionsDiv.classList.add('hidden'); }); 
+                    destinationSuggestionsDiv.appendChild(suggestionItem); 
+                }); 
+            } else { 
+                const noResultItem = document.createElement('div'); 
+                noResultItem.classList.add('p-3', 'text-gray-400', 'dark:text-gray-500', 'italic', 'text-sm'); 
+                noResultItem.textContent = "Tujuan tidak ditemukan. Silakan isi di kolom Tujuan Lainnya."; 
+                destinationSuggestionsDiv.appendChild(noResultItem); 
+            } 
+            destinationSuggestionsDiv.classList.remove('hidden'); 
+        } 
+        
+        destinationSearchInput.addEventListener('focus', function() { const searchTerm = this.value.toLowerCase(); if (searchTerm === '') { renderSuggestions(allDestinations); } else { const filtered = allDestinations.filter(d => d.toLowerCase().includes(searchTerm)); renderSuggestions(filtered); } }); 
+        destinationSearchInput.addEventListener('input', function() { const searchTerm = this.value.toLowerCase(); selectedDestinationFromList = ''; const filteredDestinations = allDestinations.filter(destination => destination.toLowerCase().includes(searchTerm) ); renderSuggestions(filteredDestinations); }); 
+        document.addEventListener('click', function(event) { if (!destinationSearchInput.contains(event.target) && !destinationSuggestionsDiv.contains(event.target)) { destinationSuggestionsDiv.classList.add('hidden'); } }); 
+        
+        const departureTimeSelect = document.getElementById('departure-time'); const departureLocationSelect = document.getElementById('departure-location'); 
+        const allDepartureLocations = [ { value: "", text: "Pilih Lokasi Pemberangkatan..." }, { value: "Agen Brengkelan (Jl. Ir. H. Juanda No.16)", text: "📍 Agen Kota / Brengkelan" }, { value: "Terminal Baru Purworejo, Lt.2 Loket 2M", text: "📍 Terminal Baru Purworejo" } ]; 
+        
+        function updateDepartureLocations() { 
+            const selectedTime = departureTimeSelect.value; departureLocationSelect.innerHTML = ''; 
+            if (selectedTime === 'Pagi') { 
+                const terminalOption = allDepartureLocations.find(loc => loc.value === "Terminal Baru Purworejo, Lt.2 Loket 2M"); 
+                if (terminalOption) { 
+                    const optionElement = document.createElement('option'); 
+                    optionElement.value = terminalOption.value; optionElement.textContent = terminalOption.text; 
+                    optionElement.className = 'dark:bg-darknavy';
+                    departureLocationSelect.appendChild(optionElement); 
+                } 
+            } else { 
+                allDepartureLocations.forEach(loc => { 
+                    const optionElement = document.createElement('option'); 
+                    optionElement.value = loc.value; optionElement.textContent = loc.text; 
+                    optionElement.className = 'dark:bg-darknavy';
+                    departureLocationSelect.appendChild(optionElement); 
+                }); 
+            } 
+        } 
+        departureTimeSelect.addEventListener('change', updateDepartureLocations); updateDepartureLocations(); 
+    };
+    </script>
+</body>
+</html>

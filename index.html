@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agen PO. Sinar Jaya Purworejo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR HEADER -->
+    <header class="navbar" id="navbar">
+        <div class="logo">
+            <a href="#beranda">Sinar Jaya <span>Purworejo</span></a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <!-- Tombol Dark/Light Mode -->
+            <li class="theme-toggle-wrapper">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Ganti Tema">
+                    <!-- Icon Bulan (muncul saat Light Mode) -->
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    
+                    <!-- Icon Matahari (Diperbaiki dengan atribut Stroke agar garis cahayanya muncul) -->
+                    <svg class="sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </li>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#tentang">Tentang Kami</a></li>
+            <li><a href="#rute">Rute Tujuan</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="pesantiket.html" class="btn-pesan-nav">Pesan Tiket</a></li>
+        </ul>
+    </header>
+
+    <!-- SECTION 1: BERANDA -->
+    <section id="beranda" class="hero" data-bg-light="#ffffff" data-bg-dark="#1d3557">
+        <div class="hero-slider">
+            <div class="slides">
+                <div class="slide" style="background-image: url('assets/img/slide1.jpg')"></div>
+                <div class="slide" style="background-image: url('assets/img/slide2.jpg')"></div>
+                <div class="slide" style="background-image: url('assets/img/slide3.jpg')"></div>
+                <div class="slide" style="background-image: url('assets/img/slide4.jpg')"></div>
+                <div class="slide" style="background-image: url('assets/img/slide5.jpg')"></div>
+            </div>
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="hero-content reveal">
+            <h1>Perjalanan Nyaman, Aman, & Tepat Waktu</h1>
+            <p>Agen resmi PO. Sinar Jaya Purworejo. Melayani rute perjalanan ke Jabodetabek, Jawa Barat, Sumatera, dan sekitarnya dengan armada terbaik.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/628118195828" target="_blank" class="btn-utama">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    Hubungi Kami
+                </a>
+                <a href="#rute" class="btn-kedua">Lihat Rute Tujuan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: TENTANG KAMI -->
+    <section id="tentang" class="section-tentang" data-bg-light="#f3f4f6" data-bg-dark="#112035">
+        <div class="container">
+            <div class="judul-section judul-gelap reveal">
+                <h2>Tentang Kami</h2>
+                <p>Mengenal lebih dekat Mitra Perjalanan Terpercaya Anda</p>
+            </div>
+            
+            <div class="tentang-grid">
+                <div class="tentang-teks reveal">
+                    <h3>Agen Resmi PO. Sinar Jaya Purworejo</h3>
+                    <p>Kami adalah perwakilan resmi (agen) PO. Sinar Jaya yang berlokasi di Purworejo. Kami berkomitmen memberikan pelayanan terbaik bagi para penumpang yang akan bepergian menuju wilayah Jabodetabek dan sekitarnya.</p>
+                    
+                    <div class="keunggulan-grid">
+                        <div class="card-keunggulan">
+                            <span class="ikon">🛡️</span>
+                            <h4>Aman & Resmi</h4>
+                            <p>Pembelian tiket dijamin valid dengan harga transparan tanpa biaya tersembunyi.</p>
+                        </div>
+                        <div class="card-keunggulan">
+                            <span class="ikon">💺</span>
+                            <h4>Armada Terbaik</h4>
+                            <p>Unit bus terawat dengan fasilitas lengkap untuk kenyamanan perjalanan jauh.</p>
+                        </div>
+                    </div>
+
+                    <div class="sosmed-tentang">
+                        <a href="https://instagram.com/sinarjaya_purworejo" target="_blank" class="ig-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Instagram
+                        </a>
+                        <a href="https://tiktok.com/@sinarjaya_purworejo279" target="_blank" class="tk-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg> TikTok
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tentang-foto reveal">
+                    <img src="assets/img/foto-bersama.jpg" alt="Tim Agen Sinar Jaya Purworejo">
+                    <div class="caption-foto">Keluarga Besar Agen Sinar Jaya Purworejo</div>
+                </div>
+            </div>
+
+            <!-- Bagian Google Maps -->
+            <div class="maps-section reveal">
+                <h3 class="maps-title">Lokasi Cabang Kami</h3>
+                <div class="maps-grid">
+                    <div class="map-card">
+                        <h4>📍 Agen Kota</h4>
+                        <p>Jl. Ir. H Juanda No.16, Tegalsari, Kec. Purworejo</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1257.770533558423!2d110.01769813673812!3d-7.702068059497365!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aebbdb913439d%3A0x49f1b33b9abb4f53!2sAgen%20Bus%20Po%20Sinar%20Jaya!5e1!3m2!1sen!2sus!4v1790156026049!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div class="map-card">
+                        <h4>📍 Cabang Terminal</h4>
+                        <p>Terminal Bus Purworejo Lt 2 Blok 2M, Kec. Banyuurip</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d799.1070566538001!2d109.9699220476875!3d-7.727563950122989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aea18d0f49367%3A0x1f5419e1a2a48a88!2sPurworejo%20Bus%20Terminal!5e1!3m2!1sen!2sus!4v1790155977466!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bagian Testimoni -->
+            <div class="testimonial-section reveal">
+                <div class="judul-section judul-gelap" style="margin-bottom: 20px;">
+                    <h2 style="font-size: 1.8rem;">Ulasan Penumpang</h2>
+                </div>
+                <div class="testi-grid">
+                    <div class="testi-card">
+                        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testi-text">"Pelayanan agen sangat ramah dan transparan. Pesan tiket via WA cepat banget, unit bus juga super nyaman buat perjalanan panjang ke Jakarta."</p>
+                        <span class="testi-author">Budi S.</span>
+                    </div>
+                    <div class="testi-card">
+                        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testi-text">"Sangat recommended! Berangkat tepat waktu dari Terminal Purworejo. Bus Suite Class Sinar Jaya memang juara untuk istirahat malam."</p>
+                        <span class="testi-author">Anita R.</span>
+                    </div>
+                    <div class="testi-card">
+                        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testi-text">"Selalu langganan tiap kali mudik dan balik. Harga resmi agen lebih murah dibanding calo. Sukses terus Agen Sinar Jaya Purworejo!"</p>
+                        <span class="testi-author">Rizal F.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: RUTE TUJUAN -->
+    <section id="rute" class="section-rute" data-bg-light="#ffffff" data-bg-dark="#1d3557">
+        <div class="container">
+            <div class="judul-section judul-gelap reveal">
+                <h2>Rute Tujuan</h2>
+                <p>Jangkauan keberangkatan luas hingga ke Jawa Barat, Jabodetabek, dan Sumatera</p>
+            </div>
+
+            <!-- PETA BERBASIS GAMBAR DENGAN SVG OVERLAY (SINGLE ROUTE) -->
+            <div class="rute-map-wrapper reveal" style="position: relative; max-width: 800px; margin: 0 auto 40px auto; background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                
+                <!-- Lapisan 1: Pattern Latar Belakang (Tech Grid) -->
+                <svg style="position: absolute; width: 100%; height: 100%; left: 0; top: 0; z-index: 0;">
+                    <defs>
+                        <pattern id="dotGridImg" width="15" height="15" patternUnits="userSpaceOnUse">
+                            <circle cx="1.5" cy="1.5" r="1.2" fill="#cbd5e1"/>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#dotGridImg)" />
+                </svg>
+
+                <!-- Lapisan 2: Slot Image Peta Asli -->
+                <img src="assets/img/map.png" alt="Peta Geografis Rute" style="position: relative; width: 100%; height: auto; display: block; z-index: 1; filter: drop-shadow(0px 6px 5px rgba(15, 23, 42, 0.15));">
+
+                <!-- Lapisan 3: Overlay Titik dan Garis Rute (Satu Jalur Bersambung) -->
+                <svg viewBox="0 0 594 420" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;" preserveAspectRatio="xMidYMid meet">
+                    
+                    <!-- Garis Rute (Satu Garis Berkelanjutan dari Purworejo -> Jabar -> Jabodetabek -> Sumatera) -->
+                    <path d="M 340 325 Q 320 280 252 290 Q 210 275 200 245 Q 150 195 130 200" stroke="#3b82f6" stroke-width="2.5" fill="none" stroke-dasharray="6,5" class="map-path"/>
+                    
+                    <!-- TITIK LOKASI & LABEL -->
+                    <!-- Sumatera (Titik Akhir) -->
+                    <circle cx="130" cy="200" r="4.5" fill="#1e293b"/>
+                    <text x="115" y="185" fill="#334155" font-size="12" font-weight="600" text-anchor="middle">Sumatera</text>
+                    
+                    <!-- Jabodetabek (Titik Transit 2) -->
+                    <circle cx="200" cy="245" r="4.5" fill="#1e293b"/>
+                    <text x="235" y="230" fill="#334155" font-size="12" font-weight="600" text-anchor="middle">Jabodetabek</text>
+                    
+                    <!-- Jawa Barat (Titik Transit 1) -->
+                    <circle cx="255" cy="290" r="4.5" fill="#1e293b"/>
+                    <text x="290" y="275" fill="#334155" font-size="12" font-weight="600" text-anchor="middle">Jawa Barat</text>
+                    
+                    <!-- Purworejo (Pusat Keberangkatan Berkedip) -->
+                    <circle cx="340" cy="325" r="6.5" fill="var(--orange-sj)" />
+                    <circle cx="340" cy="325" r="16" fill="none" stroke="var(--orange-sj)" stroke-width="2" opacity="0.6">
+                        <animate attributeName="r" values="6.5;22" dur="1.5s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.8;0" dur="1.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <text x="340" y="348" fill="#1e293b" font-size="13" font-weight="800" text-anchor="middle">Purworejo</text>
+                </svg>
+            </div>
+
+            <!-- Tombol Filter Group -->
+            <div class="rute-filters reveal">
+                <button class="filter-btn active" data-target="all">Semua</button>
+                <button class="filter-btn" data-target="jakarta">Jakarta</button>
+                <button class="filter-btn" data-target="banten">Tangerang & Banten</button>
+                <button class="filter-btn" data-target="jabar">Jawa Barat</button>
+                <button class="filter-btn" data-target="sumatera">Sumatera</button>
+            </div>
+
+            <!-- Kontainer Tag Rute -->
+            <div class="rute-container reveal">
+                <div class="rute-tags">
+                    <!-- Daftar Kota -->
+                    <span class="rute-tag" data-wilayah="jakarta">Ampera</span>
+                    <span class="rute-tag" data-wilayah="banten">Balaraja</span>
+                    <span class="rute-tag" data-wilayah="jakarta">Bambu Kuning</span>
+                    <span class="rute-tag" data-wilayah="jabar">Bekasi <span class="bintang-fav">⭐</span></span>
+                    <span class="rute-tag" data-wilayah="banten">Bitung Tangerang</span>
+                    <span class="rute-tag" data-wilayah="jabar">Bogor</span>
+                    <span class="rute-tag" data-wilayah="banten">BSD</span>
+                    <span class="rute-tag" data-wilayah="jabar">Bubulak</span>
+                    <span class="rute-tag" data-wilayah="jabar">Bulak Kapal</span>
+                    <span class="rute-tag" data-wilayah="jabar">Ciawi</span>
+                    <span class="rute-tag" data-wilayah="jabar">Cibarusah</span>
+                    <span class="rute-tag" data-wilayah="jabar">Cibitung</span>
+                    <span class="rute-tag" data-wilayah="jabar">Cicadas</span>
+                    <span class="rute-tag" data-wilayah="jabar">Cikarang</span>
+                    <span class="rute-tag" data-wilayah="banten">Cikokol</span>
+                    <span class="rute-tag" data-wilayah="jabar">Cikopo</span>
+                    <span class="rute-tag" data-wilayah="banten">Ciledug</span>
+                    <span class="rute-tag" data-wilayah="banten">Cilegon</span>
+                    <span class="rute-tag" data-wilayah="jabar">Cileungsi</span>
+                    <span class="rute-tag" data-wilayah="jabar">Cimanggis Depok</span>
+                    <span class="rute-tag" data-wilayah="banten">Ciputat</span>
+                    <span class="rute-tag" data-wilayah="jabar">Citereup</span>
+                    <span class="rute-tag" data-wilayah="jabar">Dawuan</span>
+                    <span class="rute-tag" data-wilayah="jabar">Depok Jatijajar</span>
+                    <span class="rute-tag" data-wilayah="banten">Doyong</span>
+                    <span class="rute-tag" data-wilayah="jakarta">Grogol</span>
+                    <span class="rute-tag" data-wilayah="jabar">Jatiasih</span>
+                    <span class="rute-tag" data-wilayah="jakarta">Kalideres</span>
+                    <span class="rute-tag" data-wilayah="jabar">Karawang</span>
+                    <span class="rute-tag" data-wilayah="jabar">Klari</span>
+                    <span class="rute-tag" data-wilayah="sumatera">Kotabumi Lampung</span>
+                    <span class="rute-tag" data-wilayah="jakarta">Kp. Rambutan <span class="bintang-fav">⭐</span></span>
+                    <span class="rute-tag" data-wilayah="jabar">Kranji</span>
+                    <span class="rute-tag" data-wilayah="banten">Kutabumi Tangerang</span>
+                    <span class="rute-tag" data-wilayah="jakarta">Lebak Bulus</span>
+                    <span class="rute-tag" data-wilayah="jabar">Lippo</span>
+                    <span class="rute-tag" data-wilayah="jakarta">Mampang</span>
+                    <span class="rute-tag" data-wilayah="banten">Merak</span>
+                    <span class="rute-tag" data-wilayah="sumatera">Palembang</span>
+                    <span class="rute-tag" data-wilayah="jabar">Parung</span>
+                    <span class="rute-tag" data-wilayah="jakarta">Pasar Minggu</span>
+                    <span class="rute-tag" data-wilayah="jabar">Pondok Ungu</span>
+                    <span class="rute-tag" data-wilayah="banten">Poris <span class="bintang-fav">⭐</span></span>
+                    <span class="rute-tag" data-wilayah="sumatera">Pringsewu</span>
+                    <span class="rute-tag" data-wilayah="jakarta">Pulogebang <span class="bintang-fav">⭐</span></span>
+                    <span class="rute-tag" data-wilayah="sumatera">Rajabasa</span>
+                    <span class="rute-tag" data-wilayah="banten">Serang</span>
+                    <span class="rute-tag" data-wilayah="jabar">Simpang Depok</span>
+                    <span class="rute-tag" data-wilayah="jabar">Sumberarta</span>
+                    <span class="rute-tag" data-wilayah="jabar">Taman Harapan Baru</span>
+                    <span class="rute-tag" data-wilayah="jakarta">Tanjung Priok</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: GALERI -->
+    <section id="galeri" class="section-galeri" data-bg-light="#f3f4f6" data-bg-dark="#112035">
+        <div class="container">
+            <div class="judul-section judul-gelap reveal">
+                <h2>Galeri</h2>
+                <p>Intip kenyamanan armada dan fasilitas pelayanan Sinar Jaya Purworejo</p>
+            </div>
+
+            <!-- Filter Galeri -->
+            <div class="galeri-filters reveal">
+                <button class="g-filter-btn active" data-filter="all">Semua</button>
+                <button class="g-filter-btn" data-filter="fasilitas">Fasilitas Bus</button>
+                <button class="g-filter-btn" data-filter="koleksi">Koleksi Bus</button>
+                <button class="g-filter-btn" data-filter="terminal">Terminal</button>
+                <button class="g-filter-btn" data-filter="agen">Agen Kota</button>
+                <button class="g-filter-btn" data-filter="personel">Personel</button>
+            </div>
+
+            <!-- Masonry Grid Galeri -->
+            <div class="galeri-grid reveal">
+                
+                <!-- Kategori: Fasilitas Bus (5 Kelas) -->
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/galeri-sleeper.jpg" alt="Sleeper Class">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Sleeper Class (Suite)</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/galeri-superexe.jpg" alt="Super Executive">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Super Executive</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/galeri-exe-legrest.jpg" alt="Executive Legrest">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Executive Legrest</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/galeri-exe-toilet.jpg" alt="Executive Toilet">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Executive Toilet</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/galeri-patas.jpg" alt="Patas Executive">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Patas Executive</p>
+                    </div>
+                </div>
+
+                <!-- Fasilitas Bus: Kursi -->
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/kursi-sleeper.jpg" alt="Kursi Sleeper Class">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Kursi Sleeper Class (Suite)</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/kursi-superexe.jpg" alt="Kursi Super Executive">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Kursi Super Executive</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/kursi-superexe2.jpg" alt="Kursi Super Executive">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Kursi Super Executive</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/kursi-exe-legrest.jpg" alt="Kursi Executive Legrest">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Kursi Executive Legrest</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/kursi-exe-toilet.jpg" alt="Kursi Executive Toilet">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Kursi Executive Toilet</p>
+                    </div>
+                </div>
+
+                <!-- Fasilitas Bus: Konfigurasi -->
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/konfigurasi-sleeper.jpg" alt="Konfigurasi Sleeper Class">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Konfigurasi Sleeper Class (Suite)</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/konfigurasi-superexe.jpg" alt="Konfigurasi Super Executive">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Konfigurasi Super Executive</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/konfigurasi-exe-legrest.jpg" alt="Konfigurasi Executive Legrest">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Konfigurasi Executive Legrest</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/konfigurasi-exe-toilet.jpg" alt="Konfigurasi Executive Toilet">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Konfigurasi Executive Toilet</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/konfigurasi-patas.jpg" alt="Konfigurasi Patas Executive">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Konfigurasi Patas Executive</p>
+                    </div>
+                </div>
+
+                <!-- Fasilitas Bus: Toilet -->
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/toilet-sleeper.jpg" alt="Toilet Sleeper Class">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Toilet Sleeper Class (Suite)</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/toilet-superexe.jpg" alt="Toilet Super Executive">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Toilet Super Executive</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/toilet-exe-legrest.jpg" alt="Toilet Executive Legrest">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Toilet Executive Legrest</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/toilet-exe-toilet.jpg" alt="Toilet Executive Toilet">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Toilet Executive Toilet</p>
+                    </div>
+                </div>
+
+                <!-- Fasilitas Bus: Fasilitas Lain -->
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/fasilitas-sleeper.jpg" alt="Fasilitas Lain Sleeper Class">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Fasilitas Sleeper Class (Suite)</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/fasilitas-superexe.jpg" alt="Fasilitas Lain Super Executive">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Fasilitas Lain Super Executive</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/fasilitas-exe-legrest.jpg" alt="Fasilitas Lain Executive Legrest">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Fasilitas Lain Executive Legrest</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="fasilitas">
+                    <img src="assets/img/fasilitas-exe-toilet.jpg" alt="Fasilitas Lain Executive Toilet">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Fasilitas Bus</span>
+                        <p>Fasilitas Lain Executive Toilet</p>
+                    </div>
+                </div>
+
+                <!-- Kategori: Koleksi Bus -->
+                <div class="galeri-item" data-kategori="koleksi">
+                    <img src="assets/img/bus-1.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Koleksi Bus</span>
+                        <p>Armada Sinar Jaya</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="koleksi">
+                    <img src="assets/img/bus-2.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Koleksi Bus</span>
+                        <p>Armada Sinar Jaya</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="koleksi">
+                    <img src="assets/img/bus-3.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Koleksi Bus</span>
+                        <p>Armada Sinar Jaya</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="koleksi">
+                    <img src="assets/img/bus-4.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Koleksi Bus</span>
+                        <p>Armada Sinar Jaya</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="koleksi">
+                    <img src="assets/img/bus-5.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Koleksi Bus</span>
+                        <p>Armada Sinar Jaya</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="koleksi">
+                    <img src="assets/img/bus-6.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Koleksi Bus</span>
+                        <p>Armada Sinar Jaya</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="koleksi">
+                    <img src="assets/img/bus-7.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Koleksi Bus</span>
+                        <p>Armada Sinar Jaya</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="koleksi">
+                    <img src="assets/img/bus-8.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Koleksi Bus</span>
+                        <p>Armada Sinar Jaya</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="koleksi">
+                    <img src="assets/img/bus-9.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Koleksi Bus</span>
+                        <p>Armada Sinar Jaya</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="koleksi">
+                    <img src="assets/img/bus-10.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Koleksi Bus</span>
+                        <p>Armada Sinar Jaya</p>
+                    </div>
+                </div>
+
+                <!-- Kategori: Terminal -->
+                <div class="galeri-item" data-kategori="terminal">
+                    <img src="assets/img/terminal-1.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Terminal</span>
+                        <p>Terminal Bus Purworejo</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="terminal">
+                    <img src="assets/img/terminal-2.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Terminal</span>
+                        <p>Terminal Bus Purworejo</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="terminal">
+                    <img src="assets/img/terminal-3.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Terminal</span>
+                        <p>Terminal Bus Purworejo</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="terminal">
+                    <img src="assets/img/terminal-4.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Terminal</span>
+                        <p>Terminal Bus Purworejo</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="terminal">
+                    <img src="assets/img/terminal-5.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Terminal</span>
+                        <p>Terminal Bus Purworejo</p>
+                    </div>
+                </div>
+
+                <!-- Kategori: Agen Kota -->
+                <div class="galeri-item" data-kategori="agen">
+                    <img src="assets/img/agen-1.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Agen Kota</span>
+                        <p>Loket Brengkelan</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="agen">
+                    <img src="assets/img/agen-2.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Agen Kota</span>
+                        <p>Loket Brengkelan</p>
+                    </div>
+                </div>
+
+                <!-- Kategori: Personel -->
+                <div class="galeri-item" data-kategori="personel">
+                    <img src="assets/img/karyawan-1.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Personel</span>
+                        <p>Tim Sinar Jaya Purworejo</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="personel">
+                    <img src="assets/img/karyawan-2.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Personel</span>
+                        <p>Tim Sinar Jaya Purworejo</p>
+                    </div>
+                </div>
+                <div class="galeri-item" data-kategori="personel">
+                    <img src="assets/img/karyawan-3.jpg">
+                    <div class="galeri-overlay">
+                        <span class="badge-kategori">Personel</span>
+                        <p>Tim Sinar Jaya Purworejo</p>
+                    </div>
+                </div>
+            <div class="galeri-actions reveal" id="galeri-actions">
+                <button id="btn-load-more" class="btn-galeri btn-more">Tampilkan Lebih Banyak</button>
+                <button id="btn-show-less" class="btn-galeri btn-less">Tampilkan Lebih Sedikit</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: FAQ ACCORDION -->
+    <section id="faq" data-bg-light="#ffffff" data-bg-dark="#1d3557">
+        <div class="container">
+            <div class="judul-section judul-terang reveal">
+                <h2>FAQ</h2>
+                <p>Pertanyaan Yang Paling Sering Ditanyakan</p>
+            </div>
+            
+            <div class="faq-container reveal">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Untuk pemberangkatan selain di Purworejo apakah bisa menghubungi kontak ini?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Mohon maaf, kontak ini khusus melayani agen PO. Sinar Jaya keberangkatan wilayah Purworejo dan sekitarnya. Untuk keberangkatan dari kota lain, silakan menghubungi agen resmi di domisili masing-masing.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Lokasi untuk membeli tiket secara langsung di mana saja?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Anda dapat membeli tiket fisik secara langsung di Agen Kota Brengkelan (Jl. Ir. H. Juanda No.16) atau di Cabang Terminal Baru Purworejo (Lt. 2 Blok 2M).
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Anak kecil apakah harus dibelikan tiket sendiri?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Anak dengan usia di atas 3 tahun (atau balita yang membutuhkan kursi/tempat duduk sendiri) diwajibkan membeli tiket penuh demi kenyamanan dan keselamatan selama perjalanan.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Pesan tiket online di mana?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Anda bisa langsung mengisi form pendataan melalui tombol "Pesan Tiket" di website ini. Data akan diteruskan ke WhatsApp Admin untuk konfirmasi pembayaran dan pemilihan kursi (tanpa antre!).
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Buka jam berapa loketnya?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Loket resmi kami beroperasi setiap hari mulai pukul 07.30 Pagi hingga 17.00 WIB.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Berapa nomor resmi agen Sinar Jaya Purworejo yang bisa dihubungi?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Satu-satunya nomor WhatsApp resmi kami adalah <strong>0811-8195-828</strong>. Harap berhati-hati terhadap oknum yang mengatasnamakan agen menggunakan nomor selain nomor tersebut.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Bagaimana cara membatalkan tiket?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Pembatalan tiket dapat diproses paling lambat H-1 (sehari sebelum) jadwal keberangkatan. Penumpang wajib datang langsung ke agen tempat membeli tiket sambil membawa fisik tiket yang asli.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah pembatalan tiket bisa refund (uang kembali)?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Bisa. Untuk setiap pembatalan tiket sebelum hari H akan dikenakan potongan biaya administrasi sebesar 25% (dana yang dikembalikan adalah 75% dari harga tiket).
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAMBAHKAN TOMBOLNYA DI SINI -->
+            <div class="faq-action reveal">
+                <a href="pesantiket.html" class="btn-pesan-faq">Pesan Tiket</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Lightbox Galeri -->
+    <div id="lightbox-modal" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <!-- SECTION 6: FOOTER -->
+    <footer id="kontak" class="footer-agen" data-bg="#0b1523">
+        <div class="container reveal">
+            <div class="footer-grid">
+                <div class="footer-kolom">
+                    <h4>Lokasi Agen Kota</h4>
+                    <p>📍 Jl. Ir. H Juanda No.16, Tegalsari, Ringroad Utara, Kec. Purworejo, Kabupaten Purworejo, Jawa Tengah 54151</p>
+                    <p class="jam-buka">🕒 Buka: 07.30 - 17.00 WIB</p>
+                </div>
+
+                <div class="footer-kolom">
+                    <h4>Lokasi Cabang Terminal</h4>
+                    <p>📍 Terminal Bus Purworejo Lt 2 Blok 2M, Kec. Banyuurip, Kabupaten Purworejo, Jawa Tengah 54171</p>
+                    <p class="jam-buka">🕒 Buka: 07.30 - 17.00 WIB</p>
+                </div>
+
+                <!-- Kolom ke-3 (Paling Kanan) -->
+                <div class="footer-kolom">
+                    <h4>Hubungi & Ikuti Kami</h4>
+                    <div class="sosmed-links">
+                        <!-- Tampilan seragam antara WA dan Sosmed -->
+                        <a href="https://wa.me/628118195828" target="_blank" class="wa-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366" class="wa-icon"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                            <span>WhatsApp (0811-8195-828)</span>
+                        </a>
+                        <a href="https://instagram.com/sinarjaya_purworejo" target="_blank">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            <span>@sinarjaya_purworejo</span>
+                        </a>
+                        <a href="https://tiktok.com/@sinarjaya_purworejo279" target="_blank">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                            <span>@sinarjaya_purworejo279</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Agen PO. Sinar Jaya Purworejo. Dibuat oleh Rayvaldo R.D.</p>
+        </div>
+    </footer>
+
+    <!-- TOMBOL WA MELAYANG -->
+    <a href="https://wa.me/628118195828" id="floating-wa" class="floating-wa" target="_blank" title="Hubungi Kami di WhatsApp">
+        <svg width="35" height="35" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    </a>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
