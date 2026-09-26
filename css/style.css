@@ -50,12 +50,20 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 /* Teks Hero selalu terang karena background selalu gelap */
 .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
 .hero-content p { font-size: 1.2rem; margin-bottom: 30px; color: #f1faee; font-weight: 500; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
-.hero-buttons { display: flex; gap: 15px; justify-content: center; }
-.btn-utama, .btn-kedua { padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+.hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+
+/* Tambahkan .btn-ketiga pada baris ini agar ukurannya seragam dengan tombol lain */
+.btn-utama, .btn-kedua, .btn-ketiga { padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+
 .btn-utama { background-color: #25D366; color: white; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
 .btn-utama:hover { background-color: #1ebc59; transform: translateY(-3px); }
+
 .btn-kedua { background-color: transparent; color: white; border: 2px solid white; }
 .btn-kedua:hover { background-color: white; color: var(--navy-sj); }
+
+/* Ini desain untuk tombol Pesan Tiket yang baru di Beranda */
+.btn-ketiga { background-color: var(--orange-sj); color: white; box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4); }
+.btn-ketiga:hover { background-color: #e64a19; transform: translateY(-3px); color: white; }
 
 /* ================================
    3. PENGATURAN UMUM SECTION & JUDUL
