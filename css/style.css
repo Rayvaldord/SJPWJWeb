@@ -265,7 +265,7 @@ section { padding: 100px 0; }
     .hero-content h1 { font-size: 2.2rem; }
     .hero-buttons { flex-direction: column; }
     .tentang-grid, .maps-grid { grid-template-columns: 1fr; }
-    .rute-map-wrapper { display: none; }
+    .rute-map-wrapper { display: block; margin-bottom: 25px; border-radius: 12px; }
     .rute-container { padding: 25px 15px; }
     .rute-tag { padding: 8px 16px; font-size: 0.85rem; }
     .floating-wa { bottom: 20px; left: 20px; width: 50px; height: 50px; font-size: 28px; }
