@@ -80,7 +80,7 @@ section { padding: 100px 0; }
 .tentang-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: center; margin-bottom: 50px;}
 .tentang-teks h3 { color: var(--orange-sj); font-size: 1.8rem; margin-bottom: 20px; }
 .tentang-teks p { color: #4b5563; line-height: 1.8; margin-bottom: 20px; text-align: justify; transition: 0.3s; }
-.keunggulan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+.keunggulan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; }
 .card-keunggulan { background: #ffffff; padding: 15px 20px; border-radius: 10px; border-left: 4px solid var(--orange-sj); display: flex; flex-direction: column; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: 0.4s; }
 .card-keunggulan .ikon { font-size: 1.5rem; margin-bottom: 5px; }
 .card-keunggulan h4 { color: var(--navy-sj); margin-bottom: 5px; transition: 0.3s; }
